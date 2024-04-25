@@ -42,6 +42,6 @@ function pancakeSort(array) {
 }
 
 
-let array = [4,5,11,9,0];
+//let array = [4,5,11,9,0];
 
-console.log(pancakeSort(array));
+//console.log(pancakeSort(array));
