@@ -14,13 +14,13 @@ function flip(array, n) {
 
 // Use only flip() here to manipulate the array
 function pancakeSort(array) {
-    
-    let tmp = array.length;
-    for (let j = 0; j < tmp; j++) {
+    //let loopCount = 0;
+    let tmp = array.length + 1;
+    while (tmp > -1) {
+        //console.log("loop: " + loopCount)
         let max = 0;
         let dist = 0;
         let times = 0;
-        let sorted = 0;
     
         for (let i = 0; i <array.length; i++) { //find the largest element, and the distance to
             if (array[i] > max) {
@@ -34,7 +34,9 @@ function pancakeSort(array) {
         if (array[array.length - 1] != max) //check that max is the last element
             array = flip(array, array.length); //if not then flip once more to get it from the first element to the last element
         tmp--; // decrease tmp so we exclude the 'sorted' part at the end
-        console.log(array);
+        //console.log(array);
+        //console.log("\n");
+        //loopCount++;
     }
     return array;
 }
