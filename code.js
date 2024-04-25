@@ -19,7 +19,7 @@ function pancakeSort(array) {
     let loopCount = 0;
     let done = 0;
     while (done != array.length) {
-        //console.log("loop: " + loopCount)
+        console.log("loop: " + loopCount)
         let max = 0;
         let dist = 0;
         let times = 0;
@@ -32,24 +32,25 @@ function pancakeSort(array) {
             }
             dist++;
         }
-        //console.log("max: " + max);
+        console.log("max: " + max);
         dist = max - times - 1;
-        //console.log("dist: " + dist);
-        //console.log("done: " + done);
-        if (dist == 0)
+        console.log("dist: " + dist);
+        console.log("done: " + done);
+        if (dist == 0 && done == 0)
+            array = flip(array, array.length - 2);
+        else if (dist == 0)
             array = flip(array, array.length - done + 1);
         else
             array = flip(array, dist); //flip the pancake so that the max is the first element in the array
         array = flip(array, array.length - done); //flip once more to get it from the first element to the last element     
         done++; //increase count of sorted elements
-        //console.log(array);
-        //console.log("\n");
-        //loopCount++;
+        console.log(array);
+        console.log("\n");
+        loopCount++;
     }
     console.log("End Result:")
     return array;
 }
-
 
 //let array = [5,2,1,7,9,6];
 
