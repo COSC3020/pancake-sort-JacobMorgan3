@@ -16,34 +16,41 @@ function flip(array, n) {
 function pancakeSort(array) {
     if (array.length < 2)
         return array;
-    //let loopCount = 0;
-    let tmp = array.length + 1;
-    while (tmp > -1) {
+    let loopCount = 0;
+    let done = 0;
+    while (done != array.length) {
         //console.log("loop: " + loopCount)
         let max = 0;
         let dist = 0;
         let times = 0;
-    
-        for (let i = 0; i <array.length; i++) { //find the largest element, and the distance to
+        for (let i = 0; i < array.length; i++) { //find the largest element, and the distance to
+            if (i == array.length - done)
+                break;
             if (array[i] > max) {
                 max = array[i];
                 times++;
             }
-            dist++;    
+            dist++;
         }
-        dist = dist - times + 1;
-        array = flip(array, dist); //flip the pancake so that the max is the first element in the array
-        if (array[array.length - 1] != max) //check that max is the last element
-            array = flip(array, array.length); //if not then flip once more to get it from the first element to the last element
-        tmp--; // decrease tmp so we exclude the 'sorted' part at the end
+        //console.log("max: " + max);
+        dist = max - times - 1;
+        //console.log("dist: " + dist);
+        //console.log("done: " + done);
+        if (dist == 0)
+            array = flip(array, array.length - done + 1);
+        else
+            array = flip(array, dist); //flip the pancake so that the max is the first element in the array
+        array = flip(array, array.length - done); //flip once more to get it from the first element to the last element     
+        done++; //increase count of sorted elements
         //console.log(array);
         //console.log("\n");
         //loopCount++;
     }
+    console.log("End Result:")
     return array;
 }
 
 
-//let array = [4,5,11,9,0];
+//let array = [5,2,1,7,9,6];
 
 //console.log(pancakeSort(array));
