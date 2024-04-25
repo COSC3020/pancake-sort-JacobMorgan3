@@ -14,43 +14,32 @@ function flip(array, n) {
 
 // Use only flip() here to manipulate the array
 function pancakeSort(array) {
-    let max = 0;
-    let dist = 0;
-    let sorted = 0;
     
-    for (let i = 0; i <array.length; i++) { //find the largest element
-        if (array[i] > max) {
-             max = array[i];
+    let tmp = array.length;
+    for (let j = 0; j < tmp; j++) {
+        let max = 0;
+        let dist = 0;
+        let times = 0;
+        let sorted = 0;
+    
+        for (let i = 0; i <array.length; i++) { //find the largest element, and the distance to
+            if (array[i] > max) {
+                max = array[i];
+                times++;
+            }
+            dist++;    
         }
-        dist++;    
+        dist = dist - times + 1;
+        array = flip(array, dist); //flip the pancake so that the max is the first element in the array
+        if (array[array.length - 1] != max) //check that max is the last element
+            array = flip(array, array.length); //if not then flip once more to get it from the first element to the last element
+        tmp--; // decrease tmp so we exclude the 'sorted' part at the end
+        console.log(array);
     }
-    ///you need to get dist to be the correct dist from the beginning to the max element
-    
-    
-    
-    console.log(dist);
-    console.log(max);
-    array = flip(array, dist); //flip the pancake so that the max is the first element in the array
-    console.log("here");
-    console.log(array);
-    //console.log("\n");
-    if (array[array.length - 1] != max) //check that max is the last element
-       array = flip(array, array.length); //if not then flip once more to get it from the first element to the last element
-    console.log(array);
-    console.log("\n");
-    console.log("\n");
-    
-    
-    for (let i = 0; i < array.length; i++) {
-        if (array[i] > array[i+1])
-            array = flip(array, i+2);
-        console.log(array);    
-    }
-    console.log("\n");
     return array;
 }
 
 
-let array = [4,5,0,9,0];
+let array = [4,5,11,9,0];
 
 console.log(pancakeSort(array));
