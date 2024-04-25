@@ -13,21 +13,6 @@ function flip(array, n) {
 }
 
 // Use only flip() here to manipulate the array
-function flip(array, n) {
-    flippedArray = new Array(array.length);
-    for (let i = 0; i < array.length; i++) {
-        if (array.length < n)
-            flippedArray[i] = array[array.length - i - 1];
-        if (n > 0)
-            flippedArray[i] = array[n-1];
-        else 
-            flippedArray[i] = array[i];
-        n--;    
-    }
-    return flippedArray;
-}
-
-// Use only flip() here to manipulate the array
 function pancakeSort(array) {
     if (array.length < 2)
         return array;
