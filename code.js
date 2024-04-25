@@ -12,46 +12,31 @@ function flip(array, n) {
     return flippedArray;
 }
 
-// Use only flip() here to manipulate the array
 function pancakeSort(array) {
-    if (array.length < 2)
+    if (array.length < 2) //if the array has 0 or 1 elements return it becuase it is sorted
         return array;
-    let loopCount = 0;
+    //let sectionNotSorted = array.length;
     let done = 0;
     while (done != array.length) {
-        console.log("loop: " + loopCount)
         let max = 0;
-        let dist = 0;
-        let times = 0;
-        for (let i = 0; i < array.length; i++) { //find the largest element, and the distance to
-            if (i == array.length - done)
+        let dist = 0
+        for (let i = 0; i < array.length; i++) { //find the max element, and the distance to it
+            if (i == array.length - done) //if a previous max don't consider it
                 break;
             if (array[i] > max) {
-                max = array[i];
-                times++;
+                max = array[i]; //update max
+                dist = i + 1; //update distance to max
             }
-            dist++;
         }
-        console.log("max: " + max);
-        dist = max - times - 1;
-        console.log("dist: " + dist);
-        console.log("done: " + done);
-        if (dist == 0 && done == 0)
-            array = flip(array, array.length - 2);
-        else if (dist == 0)
-            array = flip(array, array.length - done + 1);
-        else
-            array = flip(array, dist); //flip the pancake so that the max is the first element in the array
-        array = flip(array, array.length - done); //flip once more to get it from the first element to the last element     
-        done++; //increase count of sorted elements
-        console.log(array);
-        console.log("\n");
-        loopCount++;
-    }
-    console.log("End Result:")
+        array = flip(array, dist); //flip so the max is the first element
+        array = flip(array, array.length - done); //flip once more to get max at the end
+        //sectionNotSorted--;
+        done++;
+    }   
     return array;
 }
 
-//let array = [5,2,1,7,9,6];
+
+//let array = [];
 
 //console.log(pancakeSort(array));
