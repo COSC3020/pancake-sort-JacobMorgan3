@@ -12,38 +12,33 @@ function flip(array, n) {
     return flippedArray;
 }
 
-// Use only flip() here to manipulate the array
 function pancakeSort(array) {
-    if (array.length < 2)
+    if (array.length < 2) //if the array has 0 or 1 elements return it becuase it is sorted
         return array;
-    //let loopCount = 0;
-    let tmp = array.length + 1;
-    while (tmp > -1) {
-        //console.log("loop: " + loopCount)
+    //let sectionNotSorted = array.length;
+    let done = 0;
+    while (done != array.length) {
         let max = 0;
-        let dist = 0;
-        let times = 0;
-    
-        for (let i = 0; i <array.length; i++) { //find the largest element, and the distance to
+        let dist = 0
+        for (let i = 0; i < array.length; i++) { //find the max element, and the distance to it
+            if (i == array.length - done) //if it's a previous max don't consider it
+                break;
             if (array[i] > max) {
-                max = array[i];
-                times++;
+                max = array[i]; //update max
+                dist = i + 1; //update distance to max
             }
-            dist++;    
         }
-        dist = dist - times + 1;
-        array = flip(array, dist); //flip the pancake so that the max is the first element in the array
-        if (array[array.length - 1] != max) //check that max is the last element
-            array = flip(array, array.length); //if not then flip once more to get it from the first element to the last element
-        tmp--; // decrease tmp so we exclude the 'sorted' part at the end
-        //console.log(array);
-        //console.log("\n");
-        //loopCount++;
-    }
+        array = flip(array, dist); //flip so the max is the first element
+        if (dist > array.length - 1)
+            array = flip(array, array.length - done); //flip once more to get max at the end
+        
+        //sectionNotSorted--;
+        done++;
+    }   
     return array;
 }
 
 
-let array = [3,2];
+let array = [1,2,1,2];
 
 console.log(pancakeSort(array));
