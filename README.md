@@ -30,3 +30,8 @@ What is the asymptotic runtime ($\Theta$) of your algorithm in terms of the
 number of comparisons? What is it in terms of the number of flips? Add your
 answer to this markdown file.
 
+### Analysis
+
+My flip() function has one for loop in it that loops over every element in the array, so run time of n. My pancake sort funtion has a while loop that loops until we have sorted every element in the array, in each loop of the while we will sort one element so the while loop has a complexity of n. In the while loop I have a for loop that loops to find the max element we havn't sorted, so at it's sorst it will loop over the whole array, n. After the for loop I call flip() twice, once to get the max to the front of the array and then a second to get it into the correct place. Each of the flip()'s has a complexity of n. Over all the $\Theta(n^2)$
+
+
