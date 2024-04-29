@@ -32,6 +32,11 @@ answer to this markdown file.
 
 ### Analysis
 
-My flip() function has one for loop in it that loops over every element in the array, so run time of n. My pancake sort funtion has a while loop that loops until we have sorted every element in the array, in each loop of the while we will sort one element so the while loop has a complexity of n. In the while loop I have a for loop that loops to find the max element we havn't sorted, so at it's sorst it will loop over the whole array, n. After the for loop I call flip() twice, once to get the max to the front of the array and then a second to get it into the correct place. Each of the flip()'s has a complexity of n. Over all the $\Theta(n^2)$
-
+My flip() function has one for loop in it that loops over every element in the array, so run time of n. <br/> 
+My pancake sort funtion has a while loop that loops until we have sorted every element in the array, in each loop of the while we will sort one element so the while loop has a complexity of n. In the while loop I have a for loop that loops to find the max element we havn't sorted, so at it's worst it will loop over the whole array, n. After the for loop I call flip() twice, once to get the max to the front of the array and then a second to get it into the correct place. Each of the flip()'s has a complexity of n. Over all the $\Theta(n^2)$ <br/>
+<br/>
+I call flip() twice for every element in the array. The first flip() gets the current max to the front of the array and then the second flip() puts it into it's sorted location. In the flip() function I make at most 2 comparisons to ensure I reverse the correct number of elements. In pancake sort I make 2 comparisons when finding the max unsorted element. One to verify if the current element is already sorted and the other to see if that element is larger than the max element. <br/>
+I also have the main while loop that will checks it's condition after every loop, this adds one more comparison. <br/> 
+Over all, for one loop I have 5 comparisons and two flips().
+Adding number of flip() and comparisons
 
