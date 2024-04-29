@@ -21,7 +21,7 @@ function pancakeSort(array) {
         let max = 0;
         let dist = 0
         for (let i = 0; i < array.length; i++) { //find the max element, and the distance to it
-            if (i == array.length - done) //if a previous max don't consider it
+            if (i == array.length - done) //if it's a previous max don't consider it
                 break;
             if (array[i] > max) {
                 max = array[i]; //update max
@@ -29,7 +29,9 @@ function pancakeSort(array) {
             }
         }
         array = flip(array, dist); //flip so the max is the first element
-        array = flip(array, array.length - done); //flip once more to get max at the end
+        if (dist > array.length - 1)
+            array = flip(array, array.length - done); //flip once more to get max at the end
+        
         //sectionNotSorted--;
         done++;
     }   
@@ -37,6 +39,6 @@ function pancakeSort(array) {
 }
 
 
-//let array = [];
+let array = [1,2,1,2];
 
-//console.log(pancakeSort(array));
+console.log(pancakeSort(array));
